@@ -14,10 +14,10 @@ class Form {
   display(){
     var title = createElement('h2')
     title.html("Car Racing Game");
-    title.position(130, 0);
+    title.position(displayWidth/2 - 50, 0);
 
-    this.input.position(130, 160);
-    this.button.position(250, 200);
+    this.input.position(displayWidth/2 - 40, displayHeight/2 - 80);
+    this.button.position(displayWidth/2 + 95, displayHeight/2);
 
     this.button.mousePressed(()=>{
       this.input.hide();
@@ -27,8 +27,8 @@ class Form {
       player.index = playerCount;
       player.update();
       player.updateCount(playerCount);
-      this.greeting.html("Hello " + player.name)
-      this.greeting.position(130, 100);
+      this.greeting.html("Congratulations, you are in the lobby " + player.name)
+      this.greeting.position(displayWidth/2 - 70, displayHeight/4);
     });
 
   }

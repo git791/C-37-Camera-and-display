@@ -26,25 +26,45 @@ class Game {
       form = new Form()
       form.display();
     }
-  }
 
+    Car1 = createSprite(100, 200);
+    Car2 = createSprite(300, 200);
+    Car3 = createSprite(500, 200);
+    Car4 = createSprite(700, 200);
+    Cars = [Car1, Car2, Car3, Car4];
+  }
+  
   play(){
     form.hide();
-    textSize(30);
-    text("Game Start", 120, 100)
+   //textSize(30);
+   //text("Game Start", 120, 100)
     Player.getPlayerInfo();
 
     if(allPlayers !== undefined){
-      var display_position = 130;
+      //var display_position = 130;
+      var index = 0;
+      var x = 0;
+      var y ;
       for(var plr in allPlayers){
-        if (plr === "player" + player.index)
+        index = index+1;
+        x = x+200;
+        y = displayHeight - allPlayers[plr].distance;
+        Cars[index-1].x = x;
+        Cars[index-1].y = y;
+        
+        if(index === player.index){
+          Cars[index-1].shapeColor = "red";
+          camera.position.x = displayWidth/2;
+          camera.position.y = Cars[index-1].y;
+        }
+        /*if (plr === "player" + player.index)
           fill("red")
         else
           fill("black");
 
         display_position+=20;
         textSize(15);
-        text(allPlayers[plr].name + ": " + allPlayers[plr].distance, 120,display_position)
+        text(allPlayers[plr].name + ": " + allPlayers[plr].distance, 120,display_position)*/
       }
     }
 
@@ -52,5 +72,6 @@ class Game {
       player.distance +=50
       player.update();
     }
+    drawSprites();
   }
 }
